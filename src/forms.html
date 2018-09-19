@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
     
     <title>Forms</title>
     <style>
@@ -465,8 +468,8 @@
                       </div>
                       <div class="row">
                       <div class="form-group col-6">
-                          <label for="weekDropdown">Category</label>
-                          <select class="form-control" id="weekDropdown">
+                          <label for="categoryDropdown">Discount Type</label>
+                          <select class="form-control" id="categoryDropdown">
                             <option>product</option>
                             <option>Percentage</option>
                             <option>Other</option>
@@ -475,8 +478,8 @@
                         </div>
 
                         <div class="form-group col-6">
-                            <label for="weekDropdown">Campaign Type</label>
-                            <select class="form-control" id="weekDropdown">
+                            <label for="campaignTypeDropdown">Campaign Type</label>
+                            <select class="form-control" id="campaignTypeDropdown">
                               <option>Online</option>
                               <option>Offline</option>
                               <option>Both</option>
@@ -526,7 +529,83 @@
                             </div>
                       </div>
                     </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-group">
+                      <legend>Ambassador perks</legend>
+                          </div>
+                          <fieldset>
+                              <div class="form-check ">
+                                  <label class="form-check-label">
+                                      <input type="checkbox" id="ambassadorChoiceCheckbox" class="form-check-input" name="amabassadorRadio" id="amabassadorRadio"  >
+                                      Do you want ambassadors for your campaign?
+                                    </label>
+                                  </div>
+
+                                  <div class="form-check form-check-inline">
+                                      <label class="form-check-label">
+                                          <input disabled type="radio" id="sameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                          do you want same deal for ambassador?
+                                        </label>
+                                        <label class="form-check-label">
+                                          <input disabled type="radio" id="differentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                          or you want to define ambassadors perk separately?
+                                        </label>
+                                      </div>
+                          </fieldset>
+                          <fieldset class="form-group col-7">
+                            <legend>Utilization</legend>
+                            <div class="form-check form-check-inline">
+                              <label class="form-check-label">
+                                <input disabled type="radio" id="ambassadorPerDayRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                How many times a day?
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input disabled type="radio" id="ambassadorPerWeekRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios2" value="option2">
+                                how many times a week?
+                              </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input disabled type="radio" id="ambassadorPerCampaignRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios3" value="option3" >
+                                how many times entire campaign?
+                              </label>
+                            </div>
+                          </fieldset>
+                          <div class="form-group col-5">
+                            <div class="form-group">
+                                <label for="ambassadorsUtilizationDropdown">Select a number</label>
+                                <select class="form-control ambassadorDefination" id="ambassadorsUtilizationDropdown" disabled>
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                  <option>9</option>
+                                  <option>10</option>
+                                  
+                                </select>
+                              </div>
+                        </div>
+
+                          <div class="form-group">
+                          <label for="selectAmbassadors">Here is the list of ambassadors available</label>
+                         
+                        </div>
+                       
+                        
+                      
+
+
+                    </div>
+
+
+                      <button id="submitBtn" type="submit" class="btn btn-primary " disabled>Submit</button>
+
+
                     </form>
 
                     <!---form to create campaign ends here -->
@@ -548,7 +627,15 @@
       </div>
     </div>
    <script>
-     
+     $('#ambassadorChoiceCheckbox').click(()=>{
+      if($('#ambassadorChoiceCheckbox').is(':checked')){
+        $('.ambassadorDefination').removeAttr('disabled');
+        
+        
+      }else{
+        $('.ambassadorDefination').attr('disabled',true);
+      }
+     })
    </script>
   </body>
 </html>
