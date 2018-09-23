@@ -456,315 +456,331 @@
                   <div class="mT-30">
                     <!--- form to create campaign -->
 
-                    <form >
-                      <div class="row">
-                      <div class="form-group col-6">
-                        <label for="campaignTitleTxt">Campaign Title</label>
-                        <input type="email" class="form-control" id="campaignTitleTxt" aria-describedby="emailHelp" placeholder="Enter Campaign Title" required>
-                        </div>
-                        
-                            <div class="form-group col-6">
-                              <label for="exampleFormControlFile1">upload campaign Image</label>
-                              <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
-                            </div>
-                          </div>
-                      <div class="form-group">
-                        <label for="descriptionTxt">Description</label>
-                        <input type="text" class="form-control" id="descriptionTxt" placeholder="Description" maxlength="150" required>
-                      </div>
-                      
-                     
-                      
-                      <div class="form-group">
-                        <label for="termsAndConditionsTxt">Terms and Conditions</label>
-                        <textarea class="form-control" id="termsAndConditionsTxt" rows="3" maxlength="200" required></textarea>
-                      </div>
-                      <div class="row">
-                      <div class="form-group col-6">
-                        <label for="campaignStartingDatePicker">Starting date</label>
-                        <input class="form-control" id="campaignStartingDatePicker" type="date" required>
-
-                      </div>
-                      <div class="form-group col-6">
-                          <label for="weekDropdown">Select number of weeks</label>
-                          <select class="form-control" id="weekDropdown" required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                      <div class="form-group col-6">
-                          <label for="typeDropdown">Discount Type</label>
-                          <select class="form-control" id="typeDropdown" required>
-                            <option >Fixed</option>
-                            <option >Percentage</option>
-                            <option >free Meal or Product</option>
-                            
-                          </select>
-                        </div>
-                        <div class="form-group col-6" id="fixedTxt" >
-                            <label for="fixedTxt" >Enter details for fix deal</label>
-                            <input class="form-control" type="number"  >
-                          </div>
-                        <div class="form-group col-6" id="percentDiscountTxt" >
-                          <label for="percentDiscountTxt" >Enter discount percentage</label>
-                          <input class="form-control" type="number"  >
-                        </div>
-                        <div class="form-group col-6" id="freeMealDiscountTxt" >
-                          <label for="freeMealTxt" >Enter details</label>
-                          <input class="form-control" type="number"  >
-                        </div>
-                      </div>
-
-                        <div class="form-group">
-                            <label for="campaignTypeDropdown">Campaign Type</label>
-                            <select class="form-control" id="campaignTypeDropdown" required>
-                              <option>Online</option>
-                              <option>Offline</option>
-                              <option>Both</option>
-                              
-                            </select>
-                          </div>
-                        
-                        <div class="row">
-                      <fieldset class="form-group col-7">
-                        <legend>Utilization</legend>
-                        <div class="form-check form-check-inline">
-                          <label class="form-check-label">
-                            <input type="radio" id="perDayRadio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            How many times a day?
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" id="perWeekRadio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                            how many times a week?
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input type="radio" id="perCampaignRadio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" >
-                            how many times entire campaign?
-                          </label>
-                        </div>
-                      </fieldset>
-
-                      <div class="form-group col-5">
-                          <div class="form-group">
-                              <label for="utilizationDropdown">Select a number</label>
-                              <select class="form-control" id="utilizationDropdown" required>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                    <form onsubmit='return onSubmit(this)'>
+                    <div class="row" >
+                      <div class="col-6 border" style="background:#e6e9ef">
+                          <div class="row">
+                              <div class="form-group col-6">
+                                <label for="campaignTitleTxt">Campaign Title</label>
+                                <input name="campaignTitle" type="text" class="form-control" id="campaignTitleTxt" aria-describedby="emailHelp" placeholder="Enter Campaign Title" >
+                                </div>
                                 
-                              </select>
-                            </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <legend>Ambassador perks</legend>
-                          </div>
-                          <fieldset>
-                              <div class="form-check ">
-                                  <label class="form-check-label">
-                                      <input type="checkbox" id="ambassadorChoiceCheckbox" class="form-check-input" name="amabassadorRadio" id="amabassadorRadio"  >
-                                      Do you want ambassadors for your campaign?
-                                    </label>
+                                    <div class="form-group col-6">
+                                      <label for="exampleFormControlFile1">upload campaign Image</label>
+                                      <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1" >
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="form-group col-6">
+                                        <label for="descriptionTxt">Description</label>
+                                        <textarea name="description" class="form-control" id="descriptionTxt" rows="3"></textarea>
+                                        </div>
+                                      
+                                     
+                                      
+                                      <div class="form-group col-6">
+                                        <label for="termsAndConditionsTxt">Terms and Conditions</label>
+                                        <textarea class="form-control" id="termsAndConditionsTxt" rows="3" maxlength="200" ></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                          <label for="categoryDropdown" >Category</label>
+                                          <select id="categoryDropdown" class="form-control">
+                                            <option>Food and Beverages</option>
+                                            <option>clothing</option>
+                                            <option>other</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="campaignTypeDropdown">Campaign Type</label>
+                                            <select class="form-control" id="campaignTypeDropdown" >
+                                              <option>Online</option>
+                                              <option>Offline</option>
+                                              <option>Both</option>
+                                              
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                              <label for="campaignStartingDatePicker">Starting date</label>
+                                              <input class="form-control" id="campaignStartingDatePicker" type="date" >
+                      
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label for="weekDropdown">Select number of weeks</label>
+                                                <select class="form-control" id="weekDropdown" >
+                                                  <option>1</option>
+                                                  <option>2</option>
+                                                  <option>3</option>
+                                                  <option>4</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label for="typeDropdown">Discount Type</label>
+                                                    <select class="form-control" id="typeDropdown" >
+                                                      <option >Fixed</option>
+                                                      <option >Percentage</option>
+                                                      <option >free Meal or Product</option>
+                                                      
+                                                    </select>
+                                                  </div>
+                                                  <div class="form-group col-6" id="fixedTxt" >
+                                                      <label for="fixedTxt" >Enter details for fix deal</label>
+                                                      <input class="form-control" type="number"  >
+                                                    </div>
+                                                  <div class="form-group col-6" id="percentDiscountTxt" >
+                                                    <label for="percentDiscountTxt" >Enter discount percentage</label>
+                                                    <input class="form-control" type="number"  >
+                                                  </div>
+                                                  <div class="form-group col-6" id="freeMealDiscountTxt" >
+                                                    <label for="freeMealTxt" >Enter details</label>
+                                                    <input class="form-control" type="number"  >
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                    <fieldset class="form-group col-6">
+                                                      <legend>Utilization</legend>
+                                                      <div class="form-check form-check-inline">
+                                                        <label class="form-check-label">
+                                                          <input type="radio" id="perDayRadio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                          How many times a day?
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check form-check-inline">
+                                                      <label class="form-check-label">
+                                                          <input type="radio" id="perWeekRadio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                          how many times a week?
+                                                        </label>
+                                                      </div>
+                                                      <div class="form-check form-check-inline">
+                                                      <label class="form-check-label">
+                                                          <input type="radio" id="perCampaignRadio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" >
+                                                          how many times entire campaign?
+                                                        </label>
+                                                      </div>
+                                                    </fieldset>
+                              
+                                                    <div class="form-group col-5">
+                                                        <div class="form-group">
+                                                            <label for="utilizationDropdown">Select a number</label>
+                                                            <select class="form-control" id="utilizationDropdown" >
+                                                              <option>1</option>
+                                                              <option>2</option>
+                                                              <option>3</option>
+                                                              <option>4</option>
+                                                              <option>5</option>
+                                                              <option>6</option>
+                                                              <option>7</option>
+                                                              <option>8</option>
+                                                              <option>9</option>
+                                                              <option>10</option>
+                                                              
+                                                            </select>
+                                                          </div>
+                                                    </div>
+                                                  </div>
+
+                      </div><!-- main col first col-6 ends here -->
+                      <div class="col-6"  style="background:white">
+                          <div class="form-group">
+                              <legend>Ambassador perks</legend>
                                   </div>
 
-                                  <div class="form-check form-check-inline">
-                                      <label class="form-check-label">
-                                          <input disabled type="radio" id="sameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
-                                          do you want same deal for ambassador?
-                                        </label>
-                                        <label class="form-check-label">
-                                          <input disabled type="radio" id="differentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
-                                          or you want to define ambassadors perk separately?
-                                        </label>
-                                      </div>
-                          </fieldset>
-                          <fieldset class="form-group col-7">
-                            <legend>Utilization</legend>
-                            <div class="form-check form-check-inline">
-                              <label class="form-check-label">
-                                <input disabled type="radio" id="ambassadorPerDayRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                How many times a day?
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input disabled type="radio" id="ambassadorPerWeekRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios2" value="option2">
-                                how many times a week?
-                              </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input disabled type="radio" id="ambassadorPerCampaignRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios3" value="option3" >
-                                how many times entire campaign?
-                              </label>
-                            </div>
-                          </fieldset>
-                          <div class="form-group col-5">
-                            <div class="form-group">
-                                <label for="ambassadorsUtilizationDropdown">Select a number</label>
-                                <select class="form-control ambassadorDefination" id="ambassadorsUtilizationDropdown" disabled required>
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                                  <option>6</option>
-                                  <option>7</option>
-                                  <option>8</option>
-                                  <option>9</option>
-                                  <option>10</option>
-                                  
-                                </select>
-                              </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-6" >
-                                <label for="typeAmbDropdown">Discount Type</label>
-                                <select class="form-control ambDropdown" id="typeAmbDropdown" required disabled>
-                                  <option >Fixed</option>
-                                  <option >Percentage</option>
-                                  <option >free Meal or Product</option>
-                                  
-                                </select>
-                              </div>
-                              <div class="form-group col-6" id="fixedAmbTxt" >
-                                  <label for="fixedAmbTxt" >Enter details for fix deal</label>
-                                  <input class="form-control ambDropdown" type="number"  disabled>
-                                </div>
-                              <div class="form-group col-6" id="percentDiscountAmbTxt" >
-                                <label for="percentDiscountAmbTxt" >Enter discount percentage</label>
-                                <input class="form-control ambDropdown" type="number"  disabled>
-                              </div>
-                              <div class="form-group col-6" id="freeMealAmbTxt" >
-                                <label for="freeMealAmbTxt" >Enter details</label>
-                                <input class="form-control ambDropdown" type="number"  disabled>
-                              </div>
-                            </div>
-
-                          <div class="form-group">
-                          <label for="selectAmbassadors">Here is the list of ambassadors available</label>
-                          <select class="form-control" id="ambassadorsListDropdown" disabled>
-                            
-                            
-                          </select>
-                        </div>
-
-                      <!--refferal--->
-                      <div class="form-group">
-                          <legend>Refferal perks</legend>
-                              </div>
-                              <fieldset>
-                                  
-    
-                                      <div class="form-check form-check-inline">
+                                  <fieldset>
+                                      <div class="form-check ">
                                           <label class="form-check-label">
-                                              <input  type="radio" id="refferalsameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
-                                              do you want same deal for refferal?   
-                                            </label>
-                                            <label class="form-check-label">
-                                              <input  type="radio" id="refferaldifferentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
-                                                  or you want to define refferal perk separately?
+                                              <input type="checkbox" id="ambassadorChoiceCheckbox" class="form-check-input" name="amabassadorRadio" id="amabassadorRadio"  >
+                                              Do you want ambassadors for your campaign?
                                             </label>
                                           </div>
-                              </fieldset>
-                              <fieldset class="form-group col-7">
-                                <legend>Utilization</legend>
-                                <div class="form-check form-check-inline">
-                                  <label class="form-check-label">
-                                    <input disabled type="radio" id="refferalPerDayRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                    How many times a day?
-                                  </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input disabled type="radio" id="refferalPerWeekRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    how many times a week?
-                                  </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input disabled type="radio" id="refferalPerCampaignRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios3" value="option3" >
-                                    how many times entire campaign?
-                                  </label>
-                                </div>
-                              </fieldset>
-                              <div class="form-group col-5">
-                                <div class="form-group">
-                                    <label for="refferalUtilizationDropdown">Select a number</label>
-                                    <select class="form-control refferalrDefination" id="refferalUtilizationDropdown" disabled required>
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                      <option>6</option>
-                                      <option>7</option>
-                                      <option>8</option>
-                                      <option>9</option>
-                                      <option>10</option>
-                                      
-                                    </select>
-                                  </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="form-group col-6" >
-                                    <label for="typeRefDropdown">Discount Type</label>
-                                    <select class="form-control refDropdown" id="typeRefDropdown" required disabled>
-                                      <option >Fixed</option>
-                                      <option >Percentage</option>
-                                      <option >free Meal or Product</option>
-                                      
-                                    </select>
-                                  </div>
-                                  <div class="form-group col-6" id="fixedRefTxt" >
-                                      <label for="fixedRefTxt" >Enter details for fix deal</label>
-                                      <input class="form-control refDropdown" type="number"  >
+        
+                                          <div class="form-check form-check-inline">
+                                              <label class="form-check-label">
+                                                  <input disabled type="radio" id="sameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                  do you want same deal for ambassador?
+                                                </label>
+                                                <label class="form-check-label">
+                                                  <input disabled type="radio" id="differentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                  or you want to define ambassadors perk separately?
+                                                </label>
+                                              </div>
+                                  </fieldset>
+                                  <fieldset class="form-group col-6">
+                                      <legend>Utilization</legend>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                          <input disabled type="radio" id="ambassadorPerDayRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                          How many times a day?
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                      <label class="form-check-label">
+                                          <input disabled type="radio" id="ambassadorPerWeekRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios2" value="option2">
+                                          how many times a week?
+                                        </label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                      <label class="form-check-label">
+                                          <input disabled type="radio" id="ambassadorPerCampaignRadio" class="form-check-input ambassadorDefination" name="optionsRadios" id="optionsRadios3" value="option3" >
+                                          how many times entire campaign?
+                                        </label>
+                                      </div>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="ambassadorsUtilizationDropdown">Select a number</label>
+                                            <select class="form-control ambassadorDefination" id="ambassadorsUtilizationDropdown" disabled >
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                              <option>6</option>
+                                              <option>7</option>
+                                              <option>8</option>
+                                              <option>9</option>
+                                              <option>10</option>
+                                              
+                                            </select>
+                                          </div>
                                     </div>
-                                  <div class="form-group col-6" id="percentDiscountRefTxt" >
-                                    <label for="percentDiscountRefTxt" >Enter discount percentage</label>
-                                    <input class="form-control refDropdown" type="number"  >
-                                  </div>
-                                  <div class="form-group col-6" id="freeMealRefTxt" >
-                                    <label for="freeMealRefTxt" >Enter details</label>
-                                    <input class="form-control refDropdown" type="number"  >
-                                  </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-6" >
+                                            <label for="typeAmbDropdown">Discount Type</label>
+                                            <select class="form-control ambDropdown" id="typeAmbDropdown" disabled  >
+                                              <option >Fixed</option>
+                                              <option >Percentage</option>
+                                              <option >free Meal or Product</option>
+                                              
+                                            </select>
+                                          </div>
+                                          <div class="form-group col-6" id="fixedAmbTxt" >
+                                              <label for="fixedAmbTxt" >Enter details for fix deal</label>
+                                              <input class="form-control ambDropdown" type="text"  >
+                                            </div>
+                                          <div class="form-group col-6" id="percentDiscountAmbTxt" >
+                                            <label for="percentDiscountAmbTxt" >Enter discount percentage</label>
+                                            <input class="form-control ambDropdown" type="number"  >
+                                          </div>
+                                          <div class="form-group col-6" id="freeMealAmbTxt" >
+                                            <label for="freeMealAmbTxt" >Enter details</label>
+                                            <input class="form-control ambDropdown" type="text"  >
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                            <label for="selectAmbassadors">Here is the list of ambassadors available</label>
+                                            <select class="form-control" id="ambassadorsListDropdown" disabled>
+                                              
+                                              
+                                            </select>
+                                          </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <legend>Refferal perks</legend>
+                                                  </div>
+                                                  <fieldset>
+                                  
+    
+                                                      <div class="form-check form-check-inline">
+                                                          <label class="form-check-label">
+                                                              <input  type="radio" id="refferalsameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                              do you want same deal for refferal?   
+                                                            </label>
+                                                            <label class="form-check-label">
+                                                              <input  type="radio" id="refferaldifferentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                                  or you want to define refferal perk separately?
+                                                            </label>
+                                                          </div>
+                                              </fieldset>
+                                              <fieldset class="form-group col-6">
+                                                  <legend>Utilization</legend>
+                                                  <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">
+                                                      <input disabled type="radio" id="refferalPerDayRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                      How many times a day?
+                                                    </label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                  <label class="form-check-label">
+                                                      <input disabled type="radio" id="refferalPerWeekRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                      how many times a week?
+                                                    </label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                  <label class="form-check-label">
+                                                      <input disabled type="radio" id="refferalPerCampaignRadio" class="form-check-input refferalDefination" name="optionsRadios" id="optionsRadios3" value="option3" >
+                                                      how many times entire campaign?
+                                                    </label>
+                                                  </div>
+                                                </fieldset>
+                                                <div class="row">
+                                                    <div class="form-group col-6">
+                                                        <label for="refferalUtilizationDropdown">Select a number</label>
+                                                        <select class="form-control refferalrDefination" id="refferalUtilizationDropdown" disabled >
+                                                          <option>1</option>
+                                                          <option>2</option>
+                                                          <option>3</option>
+                                                          <option>4</option>
+                                                          <option>5</option>
+                                                          <option>6</option>
+                                                          <option>7</option>
+                                                          <option>8</option>
+                                                          <option>9</option>
+                                                          <option>10</option>
+                                                          
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-6" >
+                                                            <label for="typeRefDropdown">Discount Type</label>
+                                                            <select class="form-control refDropdown" id="typeRefDropdown"  disabled>
+                                                              <option >Fixed</option>
+                                                              <option >Percentage</option>
+                                                              <option >free Meal or Product</option>
+                                                              
+                                                            </select>
+                                                          </div>
+                                                          <div class="form-group col-6" id="fixedRefTxt" >
+                                                              <label for="fixedRefTxt" >Enter details for fix deal</label>
+                                                              <input class="form-control refDropdown" type="text"  >
+                                                            </div>
+                                                          <div class="form-group col-6" id="percentDiscountRefTxt" >
+                                                            <label for="percentDiscountRefTxt" >Enter discount percentage</label>
+                                                            <input class="form-control refDropdown" type="number"  >
+                                                          </div>
+                                                          <div class="form-group col-6" id="freeMealRefTxt" >
+                                                            <label for="freeMealRefTxt" >Enter details</label>
+                                                            <input class="form-control refDropdown" type="text"  >
+                                                          </div>
+                                                        </div>
 
 
-
-
-                      <!--refferal ends here-->
-                       
-                        
-                      
-
-
+                      </div><!-- main col 2nd col-6 ends here -->
                     </div>
 
+                      
+                           
+                    
+                      
+                      
 
-
-
-                      <button id="submitBtn" type="submit" class="btn btn-primary " >Submit</button>
-
-
+                        
+      
+                      
+                    
+                      <div class="row">
+                        <div class="col-12">
+                      <button id="submitBtn" type="submit"  class="btn btn-primary btn-lg btn-block" style="margin-top:50px">Submit</button>
+                    </div>
+                    </div>
                     </form>
+                  </div>
 
                     <!---form to create campaign ends here -->
                   </div>
@@ -784,7 +800,18 @@
         </footer>
       </div>
     </div>
+
    <script>
+
+
+      function onSubmit( form ){
+        alert('form submitted');
+        var data = JSON.stringify( $(form).serializeArray() ); //  <-----------
+
+        console.log( data );
+        return false; //don't submit
+      }
+
      $('#ambassadorChoiceCheckbox').click(()=>{
       if($('#ambassadorChoiceCheckbox').is(':checked')){
         $('#sameDealRadio').removeAttr('disabled');
@@ -897,7 +924,7 @@
         $('#refferalPerDayRadio').attr('disabled',true);
         $('#refferalPerWeekRadio').attr('disabled',true);
         $('#refferalPerCampaignRadio').attr('disabled',true);
-        $('#refferalUtilizationDropdown').attr('disabled',ture);
+        $('#refferalUtilizationDropdown').attr('disabled',true);
         $('#typeRefDropdown').attr('disabled',true);
 
 
@@ -915,6 +942,13 @@
         $('#typeRefDropdown').removeAttr('disabled');
       }
     })
+
+    
+
+$( "form" ).submit(function( event ) {
+  console.log( $( this ).serializeArray() );
+  event.preventDefault();
+});
 
    </script>
   </body>
