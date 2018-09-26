@@ -171,7 +171,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class='sidebar-link' href="charts.html">
+              <a class='sidebar-link' href="blank.html">
                 <span class="icon-holder">
                   <i class="c-indigo-500 ti-bar-chart"></i>
                 </span>
@@ -467,7 +467,7 @@
                                 
                                     <div class="form-group col-6">
                                       <label for="exampleFormControlFile1">upload campaign Image</label>
-                                      <input name="displayImage" name="image" type="file" class="form-control-file" id="exampleFormControlFile1" >
+                                      <input (change)="handleFileSelect($event)" name="displayImage" name="image" type="file" class="form-control-file" id="imgUpload" accept=".jpg, .jpeg, .png">
                                     </div>
                                   </div>
                                   <div class="row">
@@ -530,8 +530,8 @@
                                                     </select>
                                                   </div>
                                                   <div class="form-group col-6" id="fixedTxt" >
-                                                      <label for="fixedTxt" >Enter details for fix deal</label>
-                                                      <input class="form-control" type="number"  id="userDiscountAmount">
+                                                      <label for="fixedTxt" >Fixed discount in rupees</label>
+                                                      <input class="form-control" type="number"  id="baseDiscountAmount">
                                                     </div>
                                                   <div class="form-group col-6" id="percentDiscountTxt" >
                                                     <label for="percentDiscountTxt" >Enter discount percentage</label>
@@ -587,6 +587,7 @@
                                                   </div>
 
                       </div><!-- main col first col-6 ends here -->
+
                       <div class="col-6"  style="background:white">
                           <div class="form-group">
                               <legend>Ambassador perks</legend>
@@ -663,8 +664,8 @@
                                             </select>
                                           </div>
                                           <div class="form-group col-6" id="fixedAmbTxt" >
-                                              <label for="fixedAmbTxt" >Enter details for fix deal</label>
-                                              <input class="form-control ambDropdown" type="text" id="ambassadorDiscountAmount" >
+                                              <label for="fixedAmbTxt" >Fixed discount in rupees</label>
+                                              <input class="form-control ambDropdown" type="number" id="ambassadorDiscountAmount" >
                                             </div>
                                           <div class="form-group col-6" id="percentDiscountAmbTxt" >
                                             <label for="percentDiscountAmbTxt" >Enter discount percentage</label>
@@ -701,7 +702,7 @@
                                                             </label>
                                                           </div>
                                               </fieldset>
-                                              <fieldset class="form-group col-6">
+                                              <!-- <fieldset class="form-group col-6">
                                                   <legend>Utilization</legend>
                                                   <div class="form-check form-check-inline">
                                                     <label class="form-check-label">
@@ -740,7 +741,7 @@
                                                           
                                                         </select>
                                                       </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="row">
                                                         <div class="form-group col-6" >
                                                             <label for="typeRefDropdown">Discount Type</label>
@@ -753,8 +754,8 @@
                                                             </select>
                                                           </div>
                                                           <div class="form-group col-6" id="fixedRefTxt" >
-                                                              <label for="fixedRefTxt" >Enter details for fix deal</label>
-                                                              <input class="form-control refDropdown" type="text"  id="referralDiscountAmount">
+                                                              <label for="fixedRefTxt" >Fixed discount in rupees</label>
+                                                              <input class="form-control refDropdown" type="number"  id="referralDiscountAmount">
                                                             </div>
                                                           <div class="form-group col-6" id="percentDiscountRefTxt" >
                                                             <label for="percentDiscountRefTxt" >Enter discount percentage</label>
@@ -778,13 +779,14 @@
 
                         
       
-                      <input type="text" id="dataObj" hidden>
+                      
                     
                       <div class="row">
                         <div class="col-12">
                       <button id="submitBtn" type="button"  class="btn btn-primary btn-lg btn-block" style="margin-top:50px">Submit</button>
                     </div>
                     </div>
+                    <input type="text" id="dataObj" hidden>
                     </form>
                   </div>
 
@@ -809,6 +811,137 @@
 
    <script>
 
+     $('#ambassadorChoiceCheckbox').click(()=>{
+        if($('#ambassadorChoiceCheckbox').is(':checked')){
+          $('#sameDealRadio').removeAttr('disabled');
+          $('#differentDealRadio').removeAttr('disabled');
+         
+          
+          
+          
+        }else{
+          $('#sameDealRadio').attr('disabled',true);
+          $('#differentDealRadio').attr('disabled',true);
+         
+  
+        }
+       })
+  
+       $('#typeDropdown').change(function(){
+         var dropdownValue = $('#typeDropdown').val();
+         console.log(dropdownValue)  
+         if(dropdownValue == "percentage"){
+            $('#percentDiscountTxt').css("display","block");
+            $('#fixedTxt').css("display","none")
+           $('#freeMealDiscountTxt').css("display","none");
+  
+         }else if(dropdownValue == "freeMealOrProduct"){
+           $('#freeMealDiscountTxt').css("display","block");
+           $('#percentDiscountTxt').css("display","none");
+           $('#fixedTxt').css("display","none");
+         }else if(dropdownValue == "fixed"){
+          $('#freeMealDiscountTxt').css("display","none");
+           $('#percentDiscountTxt').css("display","none");
+           $('#fixedTxt').css("display","block");
+         }
+  
+       })
+  
+        $('#typeAmbDropdown').change(function(){
+         var dropdownValue = $('#typeAmbDropdown').val();
+         console.log(dropdownValue)  
+         if(dropdownValue == "percentage"){
+            $('#percentDiscountAmbTxt').css("display","block");
+            $('#fixedAmbTxt').css("display","none")
+           $('#freeMealDiscountAmbTxt').css("display","none");
+  
+         }else if(dropdownValue == "freeMealOrProduct"){
+           $('#freeMealDiscountAmbTxt').css("display","block");
+           $('#percentDiscountAmbTxt').css("display","none");
+           $('#fixedAmbTxt').css("display","none");
+         }else if(dropdownValue == "fixed"){
+          $('#freeMealDiscountAmbTxt').css("display","none");
+           $('#percentDiscountAmbTxt').css("display","none");
+           $('#fixedAmbTxt').css("display","block");
+         }
+  
+       })
+  
+       $('#typeRefDropdown').change(function(){
+         var dropdownValue = $('#typeRefDropdown').val();
+         console.log(dropdownValue)  
+         if(dropdownValue == "percentage"){
+            $('#percentDiscountRefTxt').css("display","block");
+            $('#fixedRefTxt').css("display","none")
+           $('#freeMealDiscountRefTxt').css("display","none");
+  
+         }else if(dropdownValue == "freeMealOrProduct"){
+           $('#freeMealDiscountRefTxt').css("display","block");
+           $('#percentDiscountRefTxt').css("display","none");
+           $('#fixedRefTxt').css("display","none");
+         }else if(dropdownValue == "fixed"){
+          $('#freeMealDiscountRefTxt').css("display","none");
+           $('#percentDiscountRefTxt').css("display","none");
+           $('#fixedRefTxt').css("display","block");
+         }
+  
+       })
+  
+       $('#sameDealRadio').click(()=>{
+        
+         if($('#sameDealRadio').is(':checked')){
+          
+           $('#ambassadorPerDayRadio').attr('disabled',true);
+           $('#ambassadorPerWeekRadio').attr('disabled',true);
+           $('#ambassadorPerCampaignRadio').attr('disabled',true);
+           $('#ambassadorsUtilizationDropdown').attr('disabled',true);
+           $('#ambassadorsListDropdown').attr('disabled',true);
+           $('#typeAmbDropdown').attr('disabled',true);
+  
+  
+         }
+       })
+  
+       $('#differentDealRadio').click(()=>{
+         
+         if($('#differentDealRadio').is(':checked')){
+          
+          $('#ambassadorPerDayRadio').removeAttr('disabled');
+           $('#ambassadorPerWeekRadio').removeAttr('disabled');
+           $('#ambassadorPerCampaignRadio').removeAttr('disabled');
+           $('#ambassadorsUtilizationDropdown').removeAttr('disabled');
+           $('#ambassadorsListDropdown').removeAttr('disabled');
+           $('#typeAmbDropdown').removeAttr('disabled');
+         }
+       })
+       /*  refferal  */
+  
+        $('#refferalsameDealRadio').click(()=>{
+        
+        if($('#refferalsameDealRadio').is(':checked')){
+         
+          $('#refferalPerDayRadio').attr('disabled',true);
+          $('#refferalPerWeekRadio').attr('disabled',true);
+          $('#refferalPerCampaignRadio').attr('disabled',true);
+          $('#refferalUtilizationDropdown').attr('disabled',true);
+          $('#typeRefDropdown').attr('disabled',true);
+  
+  
+        }
+      })
+  
+      $('#refferaldifferentDealRadio').click(()=>{
+        
+        if($('#refferaldifferentDealRadio').is(':checked')){
+         
+         $('#refferalPerDayRadio').removeAttr('disabled');
+          $('#refferalPerWeekRadio').removeAttr('disabled');
+          $('#refferalPerCampaignRadio').removeAttr('disabled');
+          $('#refferalUtilizationDropdown').removeAttr('disabled');
+          $('#typeRefDropdown').removeAttr('disabled');
+        }
+      })
+  
     
 
 // $( "form" ).submit(function( event ) {

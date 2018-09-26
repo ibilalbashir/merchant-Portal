@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-const API_URL = 'http://13.126.228.192:3000/api';
+export const API_URL = 'http://13.126.228.192:3000/api';
 
 export const Merchant  = {
     login: function(email,password,callback) {
@@ -40,7 +40,7 @@ export const Merchant  = {
         }
         
     },
-    createCampaign: function(obj,cb) {
+    createCampaign: function(obj, cb) {
         const user = JSON.parse(localStorage.getItem('user'));
         console.log(user);
         console.log(obj)
@@ -53,6 +53,7 @@ export const Merchant  = {
                 dataType: 'json',
                 data: JSON.stringify(obj),
                 success : function(e){
+                  
                     cb(null,e);
                 },
                 error : function(e){
@@ -60,6 +61,8 @@ export const Merchant  = {
                    cb(e,null);
                 }
             });
-        }
+        } 
     }
+
+   
 }

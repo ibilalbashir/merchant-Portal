@@ -1,7 +1,31 @@
 import * as $ from 'jquery';
 import * as Models from '../models';
+import * as imgUpload from '../imageUpload';
+var base64;
 export default (function () {
-    console.log("lun works")
+
+    
+      
+    $('#imgUpload').change(function($event){
+      console.log($event);
+      console.log($event.target.files);
+      
+      getBase64($event.target.files[0], result => {
+       base64 = result;
+       console.log(base64);
+        // this.file.emit(this.base64);
+      });
+    });
+    function getBase64(file, cb) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function() {
+        cb(reader.result);
+      };
+      reader.onerror = function(error) {
+        console.log('Error: ', error);
+      };
+    }
     $('#submitBtn').click(function(event){
     
         console.log("asdfasd")
@@ -22,15 +46,29 @@ export default (function () {
         data.discountAmount = discountAmount;
       
         data.discountUtilization = utilization;
-
+        
         dataObj = data;
         console.log(dataObj);
+
         Models.Merchant.createCampaign(dataObj,(err,succ) => {
             if(err){
                 alert('error ' ,err)
             }
             if(succ){
-                alert('success' , succ);
+              console.log(succ);
+             imgUpload.imageUploadFn({
+               model :'Campaign',
+               id: succ.id,
+               updateAt : 'displayImage',
+               base64 : base64,
+               container : `campaigns/${succ.id}`,
+               fileName: `display-image-${succ.id}`
+             },(err,imgUploaded) => {
+               if(err) {
+                 return alert("Error uploading image");
+               }
+               alert("Image uploaded successfully");
+             })  
             }
         })
 
@@ -60,7 +98,7 @@ export default (function () {
       var discountTypeDropdown = $('#typeDropdown');
       var ambassadorDiscountTypeDropdown = $('#typeAmbDropdown');
       var referralDiscountTypeDropdown = $('#typeRefDropdown')
-      var baseDiscountAmountTxt = $('#userDiscountAmount');
+      var baseDiscountAmountTxt = $('#baseDiscountAmount');
       var ambassadorDiscountAmountTxt = $('#ambassadorDiscountAmount');
       var referralDiscountAmountTxt = $('#referralDiscountAmount')
       var description = $('#descriptionTxt');
@@ -101,7 +139,8 @@ export default (function () {
         refferalDiscountAmount:''
       }
   //discount amount
-  userDiscountAmountTxt.on('change', function(){
+  baseDiscountAmountTxt.on('change', function(){
+      
   discountAmount.baseDiscountAmount = baseDiscountAmountTxt.val();
   })
   ambassadorDiscountAmountTxt.on('change', function(){
@@ -179,136 +218,5 @@ export default (function () {
          
         // }
   
-       $('#ambassadorChoiceCheckbox').click(()=>{
-        if($('#ambassadorChoiceCheckbox').is(':checked')){
-          $('#sameDealRadio').removeAttr('disabled');
-          $('#differentDealRadio').removeAttr('disabled');
-         
-          
-          
-          
-        }else{
-          $('#sameDealRadio').attr('disabled',true);
-          $('#differentDealRadio').attr('disabled',true);
-         
-  
-        }
-       })
-  
-       $('#typeDropdown').change(function(){
-         var dropdownValue = $('#typeDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "Percentage"){
-            $('#percentDiscountTxt').css("display","block");
-            $('#fixedTxt').css("display","none")
-           $('#freeMealDiscountTxt').css("display","none");
-  
-         }else if(dropdownValue == "free Meal or Product"){
-           $('#freeMealDiscountTxt').css("display","block");
-           $('#percentDiscountTxt').css("display","none");
-           $('#fixedTxt').css("display","none");
-         }else if(dropdownValue == "Fixed"){
-          $('#freeMealDiscountTxt').css("display","none");
-           $('#percentDiscountTxt').css("display","none");
-           $('#fixedTxt').css("display","block");
-         }
-  
-       })
-  
-        $('#typeAmbDropdown').change(function(){
-         var dropdownValue = $('#typeAmbDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "Percentage"){
-            $('#percentDiscountAmbTxt').css("display","block");
-            $('#fixedAmbTxt').css("display","none")
-           $('#freeMealDiscountAmbTxt').css("display","none");
-  
-         }else if(dropdownValue == "free Meal or Product"){
-           $('#freeMealDiscountAmbTxt').css("display","block");
-           $('#percentDiscountAmbTxt').css("display","none");
-           $('#fixedAmbTxt').css("display","none");
-         }else if(dropdownValue == "Fixed"){
-          $('#freeMealDiscountAmbTxt').css("display","none");
-           $('#percentDiscountAmbTxt').css("display","none");
-           $('#fixedAmbTxt').css("display","block");
-         }
-  
-       })
-  
-       $('#typeRefDropdown').change(function(){
-         var dropdownValue = $('#typeRefDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "Percentage"){
-            $('#percentDiscountRefTxt').css("display","block");
-            $('#fixedRefTxt').css("display","none")
-           $('#freeMealDiscountRefTxt').css("display","none");
-  
-         }else if(dropdownValue == "free Meal or Product"){
-           $('#freeMealDiscountRefTxt').css("display","block");
-           $('#percentDiscountRefTxt').css("display","none");
-           $('#fixedRefTxt').css("display","none");
-         }else if(dropdownValue == "Fixed"){
-          $('#freeMealDiscountRefTxt').css("display","none");
-           $('#percentDiscountRefTxt').css("display","none");
-           $('#fixedRefTxt').css("display","block");
-         }
-  
-       })
-  
-       $('#sameDealRadio').click(()=>{
-        
-         if($('#sameDealRadio').is(':checked')){
-          
-           $('#ambassadorPerDayRadio').attr('disabled',true);
-           $('#ambassadorPerWeekRadio').attr('disabled',true);
-           $('#ambassadorPerCampaignRadio').attr('disabled',true);
-           $('#ambassadorsUtilizationDropdown').attr('disabled',true);
-           $('#ambassadorsListDropdown').attr('disabled',true);
-           $('#typeAmbDropdown').attr('disabled',true);
-  
-  
-         }
-       })
-  
-       $('#differentDealRadio').click(()=>{
-         
-         if($('#differentDealRadio').is(':checked')){
-          
-          $('#ambassadorPerDayRadio').removeAttr('disabled');
-           $('#ambassadorPerWeekRadio').removeAttr('disabled');
-           $('#ambassadorPerCampaignRadio').removeAttr('disabled');
-           $('#ambassadorsUtilizationDropdown').removeAttr('disabled');
-           $('#ambassadorsListDropdown').removeAttr('disabled');
-           $('#typeAmbDropdown').removeAttr('disabled');
-         }
-       })
-       /*  refferal  */
-  
-        $('#refferalsameDealRadio').click(()=>{
-        
-        if($('#refferalsameDealRadio').is(':checked')){
-         
-          $('#refferalPerDayRadio').attr('disabled',true);
-          $('#refferalPerWeekRadio').attr('disabled',true);
-          $('#refferalPerCampaignRadio').attr('disabled',true);
-          $('#refferalUtilizationDropdown').attr('disabled',true);
-          $('#typeRefDropdown').attr('disabled',true);
-  
-  
-        }
-      })
-  
-      $('#refferaldifferentDealRadio').click(()=>{
-        
-        if($('#refferaldifferentDealRadio').is(':checked')){
-         
-         $('#refferalPerDayRadio').removeAttr('disabled');
-          $('#refferalPerWeekRadio').removeAttr('disabled');
-          $('#refferalPerCampaignRadio').removeAttr('disabled');
-          $('#refferalUtilizationDropdown').removeAttr('disabled');
-          $('#typeRefDropdown').removeAttr('disabled');
-        }
-      })
-  
-    
+      
 }());

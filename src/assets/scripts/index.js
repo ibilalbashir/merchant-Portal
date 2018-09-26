@@ -17,3 +17,5 @@ import './googleMaps';
 import './utils';
 import './auth';
 import './createCampaign';
+import './getCampaigns';
+import './imageUpload';
