@@ -62,6 +62,50 @@ export const Merchant  = {
                 }
             });
         } 
+    },
+    getAllCampaignsFn : function(cb){
+        const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+        $.ajax({
+            type: "GET",
+            contentType : "Application/JSON",
+            url: `${API_URL}/Merchants/${user.userId}/campaigns?access_token=${user.id}`,
+            dataType: 'JSON',
+            
+            success : function(data){
+                console.log(data)
+                cb(null,data);
+            },
+            error : function(e){
+            alert("err in geting campaigns");
+            cb(e,null);
+            
+            }
+
+        })
+    }
+    },
+    getAllCategoriesFn : function(cb){
+        const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+        $.ajax({
+            type: "GET",
+            contentType : "Application/JSON",
+            url: `${API_URL}/Categories?access_token=${user.id}`,
+            dataType: 'JSON',
+            
+            success : function(data){
+                console.log(data)
+                cb(null,data);
+            },
+            error : function(e){
+            alert("err in geting categories");
+            cb(e,null);
+            
+            }
+
+        })
+    }
     }
 
    

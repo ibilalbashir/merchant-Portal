@@ -48,6 +48,7 @@ export default (function () {
         data.discountUtilization = utilization;
         
         dataObj = data;
+        console.log('here is campaigns data')
         console.log(dataObj);
 
         Models.Merchant.createCampaign(dataObj,(err,succ) => {

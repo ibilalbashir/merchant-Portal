@@ -19,3 +19,4 @@ import './auth';
 import './createCampaign';
 import './getCampaigns';
 import './imageUpload';
+import './getCategories';
