@@ -27,7 +27,9 @@ export default (function () {
       };
     }
     $('#submitBtn').click(function(event){
-    
+    if(!$('#createCampaignForm')[0].checkValidity()){
+      return alert("fill all the fields");
+    }
         console.log("asdfasd")
         data.merchantId = JSON.parse(localStorage.getItem('user')).userId;
        
@@ -51,12 +53,15 @@ export default (function () {
         console.log('here is campaigns data')
         console.log(dataObj);
 
+        
+
         Models.Merchant.createCampaign(dataObj,(err,succ) => {
             if(err){
                 alert('error ' ,err)
             }
             if(succ){
               console.log(succ);
+              alert('campaign Created Successfully, now wait for admin to approve it');
              imgUpload.imageUploadFn({
                model :'Campaign',
                id: succ.id,
@@ -108,7 +113,7 @@ export default (function () {
       var categoryDropdown = $('#categoryDropdown');
       var campaignTypeDropdown =$('#campaignTypeDropdown');
       var campaignStartingDatePicker = $('#campaignStartingDatePicker');
-      var campaignTitleTxt = $('#campaignTitleTxt');
+      //var campaignTitleTxt = $('#campaignTitleTxt');
       var weekDropdown = $('#weekDropdown');
   
   
@@ -139,6 +144,8 @@ export default (function () {
         ambassadorDiscountAmount:'',
         refferalDiscountAmount:''
       }
+
+
   //discount amount
   baseDiscountAmountTxt.on('change', function(){
       

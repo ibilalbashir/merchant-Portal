@@ -468,32 +468,32 @@
                                 
                                     <div class="form-group col-6">
                                       <label for="exampleFormControlFile1">upload campaign Image</label>
-                                      <input (change)="handleFileSelect($event)" name="displayImage" name="image" type="file" class="form-control-file" id="imgUpload" accept=".jpg, .jpeg, .png">
+                                      <input (change)="handleFileSelect($event)" name="displayImage" name="image" type="file" class="form-control-file" id="imgUpload" accept=".jpg, .jpeg, .png" required>
                                     </div>
                                   </div>
                                   <div class="row">
                                       <div class="form-group col-6">
                                         <label for="descriptionTxt">Description</label>
-                                        <textarea name="description" class="form-control" id="descriptionTxt" rows="3"></textarea>
+                                        <textarea name="description" class="form-control" id="descriptionTxt" rows="3" maxlength="150" required></textarea>
                                         </div>
                                       
                                      
                                       
                                       <div class="form-group col-6">
                                         <label for="termsAndConditionsTxt">Terms and Conditions</label>
-                                        <textarea name="termsAndConditions" class="form-control" id="termsAndConditionsTxt" rows="3" maxlength="200" ></textarea>
+                                        <textarea name="termsAndConditions" class="form-control" id="termsAndConditionsTxt" rows="3" maxlength="150" ></textarea>
                                       </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                           <label for="categoryDropdown" >Category</label>
-                                          <select name="categoryId" id="categoryDropdown" class="form-control">
+                                          <select name="categoryId" id="categoryDropdown" class="form-control" required>
                                             
                                           </select>
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="campaignTypeDropdown">Campaign Type</label>
-                                            <select name="type" class="form-control" id="campaignTypeDropdown" >
+                                            <select name="type" class="form-control" id="campaignTypeDropdown" required>
                                               <option value="online">Online</option>
                                               <option value="offline">Offline</option>
                                               <option value="both">Both</option>
@@ -504,12 +504,13 @@
                                         <div class="row">
                                             <div class="form-group col-6">
                                               <label for="campaignStartingDatePicker">Starting date</label>
-                                              <input name="startDate" class="form-control" id="campaignStartingDatePicker" type="date" >
+                                              <input name="startDate" class="form-control" id="campaignStartingDatePicker" type="date" required>
                       
                                             </div>
                                             <div class="form-group col-6">
                                                 <label for="weekDropdown">Select number of weeks</label>
-                                                <select name="noOfWeeks" class="form-control" id="weekDropdown" >
+                                                <select name="noOfWeeks" class="form-control" id="weekDropdown" required>
+                                                  <option value=""></option>
                                                   <option>1</option>
                                                   <option>2</option>
                                                   <option>3</option>
@@ -520,26 +521,26 @@
                                             <div class="row">
                                                 <div class="form-group col-6">
                                                     <label for="typeDropdown">Discount Type</label>
-                                                    <select name="discountType" class="form-control" id="typeDropdown" >
-                                                      <option></option>
+                                                    <select name="discountType" class="form-control" id="typeDropdown" required>
+                                                      <option value=""></option>
                                                       <option value="fixed">Fixed</option>
                                                       <option value="percentage">Percentage</option>
                                                       <option value="freeMealOrProduct">free Meal or Product</option>
                                                       
                                                     </select>
                                                   </div>
-                                                  <div class="form-group col-6" id="fixedTxt" >
-                                                      <label for="fixedTxt" >Fixed discount in rupees</label>
-                                                      <input class="form-control disBase" type="number"  id="baseDiscountAmount">
+                                                  <div class="form-group col-6" id="fixedTxt" required>
+                                                      <label for="baseDiscountAmount" id="discountAmountLabel" ></label>
+                                                      <input class="form-control disBase" type="number" min="1"  id="baseDiscountAmount">
                                                     </div>
-                                                  <div class="form-group col-6" id="percentDiscountTxt" >
+                                                  <!-- <div class="form-group col-6" id="percentDiscountTxt" >
                                                     <label for="percentDiscountTxt" >Enter discount percentage</label>
                                                     <input class="form-control disBase" type="number"  >
-                                                  </div>
-                                                  <div class="form-group col-6" id="freeMealDiscountTxt" >
+                                                  </div> -->
+                                                  <!-- <div class="form-group col-6" id="freeMealDiscountTxt" >
                                                     <label for="freeMealTxt" >Enter details</label>
                                                     <input class="form-control disBase" type="text"  >
-                                                  </div>
+                                                  </div> -->
                                                 </div>
                                                 <div class="row">
                                                     <fieldset class="form-group col-6">
@@ -567,8 +568,8 @@
                                                     <div class="form-group col-5">
                                                         <div class="form-group">
                                                             <label for="utilizationDropdown">Select a number</label>
-                                                            <select name="discountUtilization" class="form-control" id="utilizationDropdown" >
-                                                              <option></option>
+                                                            <select name="discountUtilization" class="form-control" id="utilizationDropdown" required >
+                                                              <option value=""></option>
                                                               <option>1</option>
                                                               <option>2</option>
                                                               <option>3</option>
@@ -782,8 +783,9 @@
                     
                       <div class="row">
                         <div class="col-12">
-                      <button id="submitBtn" type="button"  class="btn btn-primary btn-lg btn-block" style="margin-top:50px">Submit</button>
-                    </div>
+                          <!-- <input type="submit" > -->
+                       <button id="submitBtn" type="button"  class="btn btn-primary btn-lg btn-block" style="margin-top:50px">Submit</button>
+                    </div> 
                     </div>
                     <input type="text" id="dataObj" hidden>
                     </form>
@@ -810,6 +812,31 @@
 
    <script>
 
+
+     //validations
+ 
+console.log( ); 
+
+//validations ends here
+
+// date picker validatiions
+$(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+   // alert(maxDate);
+    $('#campaignStartingDatePicker').attr('min', maxDate);
+});
+
+//date picker validations end here
      $('#ambassadorChoiceCheckbox').click(()=>{
         if($('#ambassadorChoiceCheckbox').is(':checked')){
           $('#sameDealRadio').removeAttr('disabled');
@@ -825,26 +852,46 @@
   
         }
        })
+
+
+  $('#typeDropdown').change(function(){
+    var dropdownValue = $('#typeDropdown').val();
+
+    if(dropdownValue == "percentage"){
+      $('#baseDiscountAmount').removeAttr("type");
+      $('#baseDiscountAmount').prop('type','number');
+      $('#discountAmountLabel').text( "Enter Amount in Percentage");
+    }else if(dropdownValue == "freeMealOrProduct"){
+      $('#baseDiscountAmount').removeAttr("type");
+      $('#baseDiscountAmount').prop('type','text');
+
+      $('#discountAmountLabel').text( "Enter Free Meal or Product");
+    }else if(dropdownValue == "fixed"){
+      $('#baseDiscountAmount').removeAttr("type");
+      $('#baseDiscountAmount').prop('type','number');
+      $('#discountAmountLabel').text( "Enter Fixed Discount Amount");
+    }
+
+  })
+      //  $('#typeDropdown').change(function(){
+      //    var dropdownValue = $('#typeDropdown').val();
+      //    console.log(dropdownValue)  
+      //    if(dropdownValue == "percentage"){
+      //       $('#percentDiscountTxt').css("display","block");
+      //       $('#fixedTxt').css("display","none")
+      //      $('#freeMealDiscountTxt').css("display","none");
   
-       $('#typeDropdown').change(function(){
-         var dropdownValue = $('#typeDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "percentage"){
-            $('#percentDiscountTxt').css("display","block");
-            $('#fixedTxt').css("display","none")
-           $('#freeMealDiscountTxt').css("display","none");
+      //    }else if(dropdownValue == "freeMealOrProduct"){
+      //      $('#freeMealDiscountTxt').css("display","block");
+      //      $('#percentDiscountTxt').css("display","none");
+      //      $('#fixedTxt').css("display","none");
+      //    }else if(dropdownValue == "fixed"){
+      //     $('#freeMealDiscountTxt').css("display","none");
+      //      $('#percentDiscountTxt').css("display","none");
+      //      $('#fixedTxt').css("display","block");
+      //    }
   
-         }else if(dropdownValue == "freeMealOrProduct"){
-           $('#freeMealDiscountTxt').css("display","block");
-           $('#percentDiscountTxt').css("display","none");
-           $('#fixedTxt').css("display","none");
-         }else if(dropdownValue == "fixed"){
-          $('#freeMealDiscountTxt').css("display","none");
-           $('#percentDiscountTxt').css("display","none");
-           $('#fixedTxt').css("display","block");
-         }
-  
-       })
+      //  })
   
         $('#typeAmbDropdown').change(function(){
          var dropdownValue = $('#typeAmbDropdown').val();
