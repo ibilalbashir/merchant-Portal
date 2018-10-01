@@ -37,7 +37,7 @@ export default (function () {
                 <h5 class="card-title" id="campaignTitle">`+succ[index].title+`</h5>
                             <p class="card-text" id="">`+succ[index].description+`</p>
                             
-                            <a  href="#" onclick="(function(){alert('not approved yet');})()"  class="btn btn-primary">Veritfy Coupon code</a>
+                            <a  href="#" onclick="(function(){alert('not approved yet');})()"  class="btn btn-light">Not Approved Yet</a>
                           </div></div>
                         </div></div>`)
              }

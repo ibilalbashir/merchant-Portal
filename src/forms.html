@@ -31,6 +31,12 @@
         display:block;
       }
       #fixedAmbTxt{
+        display: block;
+      }
+      #ambDiscountAmount{
+        display: none;
+      }
+      #labelAmbDiscountAmount{
         display: none;
       }
       #percentDiscountAmbTxt{
@@ -39,13 +45,19 @@
       #freeMealAmbTxt{
         display: none;
       }
-      #fixedRefTxt{
-        display: none;
-      }
+      /* #fixedRefTxt{
+        display: block;
+      } */
       #percentDiscountRefTxt{
         display: none;
       }
       #freeMealRefTxt{
+        display: none;
+      }
+      #reflabel{
+        display: none;
+      }
+      #referralDiscountAmount{
         display: none;
       }
 
@@ -155,7 +167,7 @@
           <!-- ### $Sidebar Menu ### -->
           <ul class="sidebar-menu scrollable pos-r">
             <li class="nav-item mT-30 active">
-              <a class="sidebar-link" href="index.html">
+              <a class="sidebar-link" href="buttons.html">
                 <span class="icon-holder">
                   <i class="c-blue-500 ti-home"></i>
                 </span>
@@ -172,7 +184,7 @@
             </li> -->
             <li class="nav-item">
 
-              <a class='sidebar-link' href="blank.html">
+              <a class='sidebar-link' href="charts.html">
                 <span class="icon-holder">
                   <i class="c-indigo-500 ti-bar-chart"></i>
                 </span>
@@ -596,18 +608,18 @@
                                   <fieldset>
                                       <div class="form-check ">
                                           <label class="form-check-label">
-                                              <input type="checkbox" id="ambassadorChoiceCheckbox" class="form-check-input" name="amabassadorRadio" id="amabassadorRadio"  >
+                                              <input type="checkbox" id="ambassadorChoiceCheckbox" class="form-check-input" name="amabassadorRadio"  >
                                               Do you want ambassadors for your campaign?
                                             </label>
                                           </div>
         
                                           <div class="form-check form-check-inline">
                                               <label class="form-check-label">
-                                                  <input disabled type="radio" id="sameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                  <input disabled type="radio" id="sameAmbDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
                                                   do you want same deal for ambassador?
                                                 </label>
                                                 <label class="form-check-label">
-                                                  <input disabled type="radio" id="differentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
+                                                  <input disabled type="radio" id="differentAmbDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1" id="amabassadorRadio1"  >
                                                   or you want to define ambassadors perk separately?
                                                 </label>
                                               </div>
@@ -664,23 +676,24 @@
                                             </select>
                                           </div>
                                           <div class="form-group col-6" id="fixedAmbTxt" >
-                                              <label for="fixedAmbTxt" >Fixed discount in rupees</label>
-                                              <input class="form-control ambDropdown" type="number" id="ambassadorDiscountAmount" >
+                                              <label id="labelAmbDiscountAmount" for="ambDiscountAmount" ></label>
+                                              <input class="form-control ambDropdown" type="number" id="ambDiscountAmount" >
                                             </div>
-                                          <div class="form-group col-6" id="percentDiscountAmbTxt" >
+                                          <!-- <div class="form-group col-6" id="percentDiscountAmbTxt" >
                                             <label for="percentDiscountAmbTxt" >Enter discount percentage</label>
                                             <input class="form-control ambDropdown" type="number"  >
-                                          </div>
-                                          <div class="form-group col-6" id="freeMealAmbTxt" >
+                                          </div> -->
+                                          <!-- <div class="form-group col-6" id="freeMealAmbTxt" >
                                             <label for="freeMealAmbTxt" >Enter details</label>
                                             <input class="form-control ambDropdown" type="text"  >
-                                          </div>
+                                          </div> -->
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-6">
                                             <label for="selectAmbassadors">Here is the list of ambassadors available</label>
-                                            <select class="form-control" id="ambassadorsListDropdown" disabled>
-                                              
+                                            <select multiple="multiple" class="form-control" id="ambassadorsListDropdown" >
+                                                                                                
+                                                  
                                               
                                             </select>
                                           </div>
@@ -689,15 +702,21 @@
                                               <legend>Referral perks</legend>
                                                   </div>
                                                   <fieldset>
+                                                      <div class="form-check ">
+                                                          <label class="form-check-label">
+                                                              <input type="checkbox" id="referralCheckbox" class="form-check-input" name="referralCheckbox" >
+                                                              Do you want referrals ?
+                                                            </label>
+                                                          </div>
                                   
     
                                                       <div class="form-check form-check-inline">
                                                           <label class="form-check-label">
-                                                              <input  type="radio" id="refferalsameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1"  >
+                                                              <input  type="radio" id="referralsameDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1"  disabled>
                                                               do you want same deal for referral?   
                                                             </label>
                                                             <label class="form-check-label">
-                                                              <input  type="radio" id="refferaldifferentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1"  >
+                                                              <input  type="radio" id="referraldifferentDealRadio" class="form-check-input ambassadorDefination" name="amabassadorRadio1"  disabled>
                                                                   or you want to define refferal perk separately?
                                                             </label>
                                                           </div>
@@ -753,18 +772,18 @@
                                                               
                                                             </select>
                                                           </div>
-                                                          <div class="form-group col-6" id="fixedRefTxt" >
-                                                              <label for="fixedRefTxt" >Fixed discount in rupees</label>
+                                                          <div class="form-group col-6" id="" >
+                                                              <label for="referralDiscountAmount" id="refLabel"></label>
                                                               <input class="form-control refDropdown" type="number"  id="referralDiscountAmount">
                                                             </div>
-                                                          <div class="form-group col-6" id="percentDiscountRefTxt" >
+                                                          <!-- <div class="form-group col-6" id="percentDiscountRefTxt" >
                                                             <label for="percentDiscountRefTxt" >Enter discount percentage</label>
                                                             <input class="form-control refDropdown" type="number"  >
-                                                          </div>
-                                                          <div class="form-group col-6" id="freeMealRefTxt" >
+                                                          </div> -->
+                                                          <!-- <div class="form-group col-6" id="freeMealRefTxt" >
                                                             <label for="freeMealRefTxt" >Enter details</label>
                                                             <input class="form-control refDropdown" type="text"  >
-                                                          </div>
+                                                          </div> -->
                                                         </div>
 
 
@@ -813,6 +832,8 @@
    <script>
 
 
+
+
      //validations
  
 console.log( ); 
@@ -839,15 +860,31 @@ $(function(){
 //date picker validations end here
      $('#ambassadorChoiceCheckbox').click(()=>{
         if($('#ambassadorChoiceCheckbox').is(':checked')){
-          $('#sameDealRadio').removeAttr('disabled');
+          $('#sameAmbDealRadio').removeAttr('disabled');
           $('#differentDealRadio').removeAttr('disabled');
+          $('#ambassadorsListDropdown').removeAttr('disabled');
+          $('#labelAmbDiscountAmount').css('display','block');
+          $('#ambDiscountAmount').css('display','none')
+          $('#differentAmbDealRadio').removeAttr('disabled');
+
          
           
           
           
         }else{
-          $('#sameDealRadio').attr('disabled',true);
+          $('#sameAmbDealRadio').attr('disabled',true);
           $('#differentDealRadio').attr('disabled',true);
+          $('#ambassadorPerDayRadio').attr('disabled',true);
+          $('#ambassadorPerWeekRadio').attr('disabled',true);
+          $('#ambassadorPerCampaignRadio').attr('disbaled', true);
+          $('#ambassadorPerCampaignRadio').attr('disabled', true);
+
+          $('#ambassadorsUtilizationDropdown').attr('disabled', true);
+          $('#typeAmbDropdown').attr('disabled', true);
+          $('#ambassadorsListDropdown').attr('disabled', true);
+          $('#ambDiscountAmount').attr('disabled', true)
+          $('#differentAmbDealRadio').attr('disabled', true); 
+
          
   
         }
@@ -873,6 +910,29 @@ $(function(){
     }
 
   })
+
+
+  //Ambasssador Discount type JQuery
+  $('#typeAmbDropdown').change(function(){
+    var dropdownValue = $('#typeAmbDropdown').val();
+
+    if(dropdownValue == "percentage"){
+      $('#ambDiscountAmount').removeAttr("type");
+      $('#ambDiscountAmount').prop('type','number');
+      $('#labelAmbDiscountAmount').text( "Enter Amount in Percentage");
+    }else if(dropdownValue == "freeMealOrProduct"){
+      $('#ambDiscountAmount').removeAttr("type");
+      $('#ambDiscountAmount').prop('type','text');
+
+      $('#labelAmbDiscountAmount').text( "Enter Free Meal or Product");
+    }else if(dropdownValue == "fixed"){
+      $('#ambDiscountAmount').removeAttr("type");
+      $('#ambDiscountAmount').prop('type','number');
+      $('#labelAmbDiscountAmount').text( "Enter Fixed Discount Amount");
+    }
+
+  })
+
       //  $('#typeDropdown').change(function(){
       //    var dropdownValue = $('#typeDropdown').val();
       //    console.log(dropdownValue)  
@@ -893,64 +953,65 @@ $(function(){
   
       //  })
   
-        $('#typeAmbDropdown').change(function(){
-         var dropdownValue = $('#typeAmbDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "percentage"){
-            $('#percentDiscountAmbTxt').css("display","block");
-            $('#fixedAmbTxt').css("display","none")
-           $('#freeMealDiscountAmbTxt').css("display","none");
+      //   $('#typeAmbDropdown').change(function(){
+      //    var dropdownValue = $('#typeAmbDropdown').val();
+      //    console.log(dropdownValue)  
+      //    if(dropdownValue == "percentage"){
+      //       $('#percentDiscountAmbTxt').css("display","block");
+      //       $('#fixedAmbTxt').css("display","none")
+      //      $('#freeMealDiscountAmbTxt').css("display","none");
   
-         }else if(dropdownValue == "freeMealOrProduct"){
-           $('#freeMealDiscountAmbTxt').css("display","block");
-           $('#percentDiscountAmbTxt').css("display","none");
-           $('#fixedAmbTxt').css("display","none");
-         }else if(dropdownValue == "fixed"){
-          $('#freeMealDiscountAmbTxt').css("display","none");
-           $('#percentDiscountAmbTxt').css("display","none");
-           $('#fixedAmbTxt').css("display","block");
-         }
+      //    }else if(dropdownValue == "freeMealOrProduct"){
+      //      $('#freeMealDiscountAmbTxt').css("display","block");
+      //      $('#percentDiscountAmbTxt').css("display","none");
+      //      $('#fixedAmbTxt').css("display","none");
+      //    }else if(dropdownValue == "fixed"){
+      //     $('#freeMealDiscountAmbTxt').css("display","none");
+      //      $('#percentDiscountAmbTxt').css("display","none");
+      //      $('#fixedAmbTxt').css("display","block");
+      //    }
   
-       })
+      //  })
   
-       $('#typeRefDropdown').change(function(){
-         var dropdownValue = $('#typeRefDropdown').val();
-         console.log(dropdownValue)  
-         if(dropdownValue == "percentage"){
-            $('#percentDiscountRefTxt').css("display","block");
-            $('#fixedRefTxt').css("display","none")
-           $('#freeMealDiscountRefTxt').css("display","none");
+      //  $('#typeRefDropdown').change(function(){
+      //    var dropdownValue = $('#typeRefDropdown').val();
+      //    console.log(dropdownValue)  
+      //    if(dropdownValue == "percentage"){
+      //       $('#percentDiscountRefTxt').css("display","block");
+      //       $('#fixedRefTxt').css("display","none")
+      //      $('#freeMealDiscountRefTxt').css("display","none");
   
-         }else if(dropdownValue == "freeMealOrProduct"){
-           $('#freeMealDiscountRefTxt').css("display","block");
-           $('#percentDiscountRefTxt').css("display","none");
-           $('#fixedRefTxt').css("display","none");
-         }else if(dropdownValue == "fixed"){
-          $('#freeMealDiscountRefTxt').css("display","none");
-           $('#percentDiscountRefTxt').css("display","none");
-           $('#fixedRefTxt').css("display","block");
-         }
+      //    }else if(dropdownValue == "freeMealOrProduct"){
+      //      $('#freeMealDiscountRefTxt').css("display","block");
+      //      $('#percentDiscountRefTxt').css("display","none");
+      //      $('#fixedRefTxt').css("display","none");
+      //    }else if(dropdownValue == "fixed"){
+      //     $('#freeMealDiscountRefTxt').css("display","none");
+      //      $('#percentDiscountRefTxt').css("display","none");
+      //      $('#fixedRefTxt').css("display","block");
+      //    }
   
-       })
+      //  })
   
-       $('#sameDealRadio').click(()=>{
+       $('#sameAmbDealRadio').click(()=>{
         
-         if($('#sameDealRadio').is(':checked')){
+         if($('#sameAmbDealRadio').is(':checked')){
           
            $('#ambassadorPerDayRadio').attr('disabled',true);
            $('#ambassadorPerWeekRadio').attr('disabled',true);
            $('#ambassadorPerCampaignRadio').attr('disabled',true);
            $('#ambassadorsUtilizationDropdown').attr('disabled',true);
-           $('#ambassadorsListDropdown').attr('disabled',true);
+          //  $('#ambassadorsListDropdown').attr('disabled',true);
            $('#typeAmbDropdown').attr('disabled',true);
+          $('#ambDiscountAmount').css('display','none');
   
   
          }
        })
   
-       $('#differentDealRadio').click(()=>{
+       $('#differentAmbDealRadio').click(()=>{
          
-         if($('#differentDealRadio').is(':checked')){
+         if($('#differentAmbDealRadio').is(':checked')){
           
           $('#ambassadorPerDayRadio').removeAttr('disabled');
            $('#ambassadorPerWeekRadio').removeAttr('disabled');
@@ -958,35 +1019,100 @@ $(function(){
            $('#ambassadorsUtilizationDropdown').removeAttr('disabled');
            $('#ambassadorsListDropdown').removeAttr('disabled');
            $('#typeAmbDropdown').removeAttr('disabled');
+           $('#ambDiscountAmount').css("display","block");
+           $('#ambDiscountAmount').removeAttr('disabled');
          }
        })
        /*  refferal  */
   
-        $('#refferalsameDealRadio').click(()=>{
+      //   $('#refferalsameDealRadio').click(()=>{
         
-        if($('#refferalsameDealRadio').is(':checked')){
+      //   if($('#refferalsameDealRadio').is(':checked')){
          
-          $('#refferalPerDayRadio').attr('disabled',true);
-          $('#refferalPerWeekRadio').attr('disabled',true);
-          $('#refferalPerCampaignRadio').attr('disabled',true);
-          $('#refferalUtilizationDropdown').attr('disabled',true);
-          $('#typeRefDropdown').attr('disabled',true);
+      //     $('#refferalPerDayRadio').attr('disabled',true);
+      //     $('#refferalPerWeekRadio').attr('disabled',true);
+      //     $('#refferalPerCampaignRadio').attr('disabled',true);
+      //     $('#refferalUtilizationDropdown').attr('disabled',true);
+      //     $('#typeRefDropdown').attr('disabled',true);
   
   
+      //   }
+      // })
+  
+      // $('#refferaldifferentDealRadio').click(()=>{
+        
+      //   if($('#refferaldifferentDealRadio').is(':checked')){
+         
+      //    $('#refferalPerDayRadio').removeAttr('disabled');
+      //     $('#refferalPerWeekRadio').removeAttr('disabled');
+      //     $('#refferalPerCampaignRadio').removeAttr('disabled');
+      //     $('#refferalUtilizationDropdown').removeAttr('disabled');
+      //     $('#typeRefDropdown').removeAttr('disabled');
+      //   }
+      // })
+
+
+      // referral JQuery
+
+      $('#referralCheckbox').click(()=>{
+        if($('#referralCheckbox').is(':checked')){
+          $('#referralsameDealRadio').removeAttr('disabled');
+          $('#referraldifferentDealRadio').removeAttr('disabled');
+        }else{
+          $('#referralsameDealRadio').attr('disabled',true);
+          $('#referraldifferentDealRadio').attr('disabled', true);
+          $('#typeRefDropdown').attr('disabled', true);
+          $('#referralDiscountAmount').css('display','none');
+          $('#refLabel').css('display','none');
         }
       })
-  
-      $('#refferaldifferentDealRadio').click(()=>{
-        
-        if($('#refferaldifferentDealRadio').is(':checked')){
-         
-         $('#refferalPerDayRadio').removeAttr('disabled');
-          $('#refferalPerWeekRadio').removeAttr('disabled');
-          $('#refferalPerCampaignRadio').removeAttr('disabled');
-          $('#refferalUtilizationDropdown').removeAttr('disabled');
+
+      $('#referralsameDealRadio').click(()=>{
+        if($('#referralsameDealRadio').is(':checked')){
+          $('#typeRefDropdown').attr('disabled', true);
+          $('#referralDiscountAmount').css('display','none');
+          $('#refLabel').css('display','none');
+        }
+      })
+
+       $('#referraldifferentDealRadio').click(()=>{
+        if($('#referraldifferentDealRadio').is(':checked')){
           $('#typeRefDropdown').removeAttr('disabled');
+        
         }
       })
+      $('#typeRefDropdown').change(function(){
+        $('#referralDiscountAmount').css('display','block');
+        $('#refLabel').css('display','block');
+        
+        var typeRefVal = $('#typeRefDropdown').val();
+        console.log(typeRefVal);
+        if(typeRefVal == 'fixed'){
+          
+          $('#referralDiscountAmount').removeAttr('type');
+          $('#referralDiscountAmount').prop('type','number');
+          
+          $('#refLabel').text('Enter Fixed Discount Amount');
+
+        }else if(typeRefVal == 'percentage'){
+          
+          $('#referralDiscountAmount').removeAttr('type');
+          $('#referralDiscountAmount').prop('type','number');
+          
+          $('#refLabel').text('Enter discount in percentage');
+          
+        }else if(typeRefVal == 'freeMealOrProduct'){
+         
+          $('#referralDiscountAmount').removeAttr('type');
+          $('#referralDiscountAmount').prop('type','text');
+          
+          $('#refLabel').text('Enter free product details');
+        } else if(typeRefVal == ''){
+          $('#refLabel').text('Select a discount type');
+        }
+        
+      })
+
   
     
 

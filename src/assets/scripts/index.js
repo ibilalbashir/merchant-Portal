@@ -21,3 +21,4 @@ import './getCampaigns';
 import './imageUpload';
 import './getCategories';
 import './couponVerification';
+import './getAmbassadors';

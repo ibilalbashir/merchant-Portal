@@ -83,7 +83,7 @@ export default (function () {
     var data={
       
         campaignType:'',
-        discountAmount :'',
+        
         description:'',
         termsAndConditions : '',
         categoryId : '',
@@ -92,7 +92,8 @@ export default (function () {
         startDate:'',
         createdOn:'',
         isApproved:'',
-       
+        
+        discountType:'',
         discountAmount :'',
         discountUtilization:''
   

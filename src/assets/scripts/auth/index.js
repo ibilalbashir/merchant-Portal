@@ -26,12 +26,14 @@ export default (function () {
         e.preventDefault()
         const un = $('#loginUn').val();
         const pw = $('#loginPw').val();
+        // console.log(un);
+        // console.log(pw)
         Models.Merchant.login(un,pw,(err,success) => {
             if(err){
                 alert("Invalid email or password");
                 return;
             }
-            console.log(success);
+            console.log('success');
             localStorage.setItem("user",JSON.stringify(success));
             $(location).attr('href', '/charts.html')
             //localStorage.setItem('loginStatus', true);

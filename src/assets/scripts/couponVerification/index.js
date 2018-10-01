@@ -1,3 +1,4 @@
+
 import * as $ from 'jquery';
 import * as Models from '../models';
 
@@ -11,7 +12,7 @@ export default (function () {
         var couponCode = $('#couponCodeTxt').val();
         if(couponCode == ''){
             $('#couponCodeTxt').css('border-color','red');
-            return alert('please input coupon code in the text box')
+            return swal('please input coupon code in the text box')
             
         }
         var campaignId = GetURLParameter('id');
