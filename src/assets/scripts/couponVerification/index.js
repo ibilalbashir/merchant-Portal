@@ -16,7 +16,11 @@ export default (function () {
         var couponCode = $('#couponCodeTxt').val();
         if(couponCode == ''){
             $('#couponCodeTxt').css('border-color','red');
-            return swal('please input coupon code in the text box')
+            return swal({
+                title: "Enter Coupon code",
+                text: "Please Enter the coupon code in the text box",
+                icon: 'warning'
+            })
             
         }
         var campaignId = GetURLParameter('id');

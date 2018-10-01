@@ -1,3 +1,9 @@
+
+document.write(
+    unescape("%3Cscript src='https://unpkg.com/sweetalert/dist/sweetalert.min.js' type='text/javascript'%3E%3C/script%3E")
+  );
+
+
 import * as $ from 'jquery';
 import * as Models from '../models';
 

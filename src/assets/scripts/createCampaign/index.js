@@ -1,3 +1,8 @@
+
+document.write(
+  unescape("%3Cscript src='https://unpkg.com/sweetalert/dist/sweetalert.min.js' type='text/javascript'%3E%3C/script%3E")
+);
+
 import * as $ from 'jquery';
 import * as Models from '../models';
 import * as imgUpload from '../imageUpload';
@@ -46,7 +51,7 @@ export default (function () {
         data.isApproved= false;
         data.discountType= discountType;
         data.discountAmount = discountAmount;
-      
+        data.ambassadorIds = ambassadorIds.val();
         data.discountUtilization = utilization;
         
         dataObj = data;
@@ -57,7 +62,8 @@ export default (function () {
 
         Models.Merchant.createCampaign(dataObj,(err,succ) => {
             if(err){
-                alert('error ' ,err)
+                swal("error in creating campaign");
+                console.log(err);
             }
             if(succ){
               console.log(succ);
@@ -92,7 +98,7 @@ export default (function () {
         startDate:'',
         createdOn:'',
         isApproved:'',
-        
+        ambassadorIds:'',
         discountType:'',
         discountAmount :'',
         discountUtilization:''
@@ -107,7 +113,7 @@ export default (function () {
       var ambassadorDiscountTypeDropdown = $('#typeAmbDropdown');
       var referralDiscountTypeDropdown = $('#typeRefDropdown')
       var baseDiscountAmountTxt = $('#baseDiscountAmount');
-      var ambassadorDiscountAmountTxt = $('#ambassadorDiscountAmount');
+      var ambassadorDiscountAmountTxt = $('#ambDiscountAmount');
       var referralDiscountAmountTxt = $('#referralDiscountAmount')
       var description = $('#descriptionTxt');
       var campaignTitleTxt = $('#campaignTitleTxt');
@@ -117,6 +123,7 @@ export default (function () {
       var campaignStartingDatePicker = $('#campaignStartingDatePicker');
       //var campaignTitleTxt = $('#campaignTitleTxt');
       var weekDropdown = $('#weekDropdown');
+      var ambassadorIds = $('#ambassadorsListDropdown');
   
   
       const utilization = {
