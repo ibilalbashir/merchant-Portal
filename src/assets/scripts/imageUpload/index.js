@@ -9,6 +9,7 @@ export const imageUploadFn = function(obj,cb) {
         dataType: 'json',
         data: JSON.stringify(obj),
         success : function(e){
+            alert('image uploaded successfully')
             cb(null,e);
         },
         error : function(e){

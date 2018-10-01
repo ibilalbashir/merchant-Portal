@@ -21,11 +21,11 @@ export default (function () {
                       console.log("value of isApproved",succ[index].isApproved)
                 console.log("loop works");
                 $('#mainContent').append(`<div class="col-3 " style="padding-top:30px"><div class="card shadow-lg border-0 text-center"><div class="card-body ">
-                <img class="card-img-top" src="`+ succ[index].displayImage +`" alt="Card image cap">           
+                <img class="card-img-top" src="`+ succ[index].displayImage +`" alt="Image Not Available">           
                 <h5 class="card-title" id="campaignTitle">`+succ[index].title+`</h5>
                             <p class="card-text" id="">`+succ[index].description+`</p>
                             
-                            <a  href="blank.html?id=`+ succ[index].id +`"     class="btn btn-primary">Veritfy Coupon code</a>
+                            <a  href="blank.html?id=`+ succ[index].id +`&campaignName=`+ succ[index].title +`"     class="btn btn-primary">Veritfy Coupon code</a>
                           </div></div>
                         </div></div>`)
                 
@@ -33,7 +33,8 @@ export default (function () {
                 console.log("value of isApproved",succ[index].isApproved)
                 console.log("loop works");
                 $('#mainContent').append(`<div class="col-3 " style="padding-top:30px"><div class="card shadow-lg border-0 text-center"><div class="card-body ">
-                            <h5 class="card-title" id="campaignTitle">`+succ[index].title+`</h5>
+                <img class="card-img-top" src="`+ succ[index].displayImage +`" alt="Image Not Available">            
+                <h5 class="card-title" id="campaignTitle">`+succ[index].title+`</h5>
                             <p class="card-text" id="">`+succ[index].description+`</p>
                             
                             <a  href="#" onclick="(function(){alert('not approved yet');})()"  class="btn btn-primary">Veritfy Coupon code</a>

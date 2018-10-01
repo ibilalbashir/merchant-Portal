@@ -61,7 +61,7 @@ export default (function () {
             }
             if(succ){
               console.log(succ);
-              alert('campaign Created Successfully, now wait for admin to approve it');
+              alert('campaign created successfully')
              imgUpload.imageUploadFn({
                model :'Campaign',
                id: succ.id,
@@ -73,6 +73,7 @@ export default (function () {
                if(err) {
                  return alert("Error uploading image");
                }
+               
                alert("Image uploaded successfully");
              })  
             }

@@ -106,6 +106,27 @@ export const Merchant  = {
 
         })
     }
+    },verifyCouponFn : function(campaignId, couponCode,cb){
+        const user = JSON.parse(localStorage.getItem('user'));
+        if(user){
+            $.ajax({
+                type : "GET",
+                contentType : "Application/JSON",
+                url: `${API_URL}/Campaigns/${campaignId}/verify-coupon?code=${couponCode}`,
+                dataType: 'JSON',
+                success : function(obj){
+                    cb(null,obj);
+                    console.log(obj)
+                },
+                error : function(e){
+                    //alert(e);
+                    console.log("something went wrong")
+                    console.log(e.message);
+                    cb(e,null);
+                }
+
+            })
+        }
     }
 
    
